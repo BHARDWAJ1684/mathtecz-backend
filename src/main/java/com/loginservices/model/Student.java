@@ -1,5 +1,6 @@
 package com.loginservices.model;
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -16,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Student {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "student_id")
 	private int id;
 	private String name;
@@ -27,7 +28,7 @@ public class Student {
 	private String pwd;
 	private String role;
 	@Column(name = "create_dt")
-	private String createDt;
+	private Date createDt;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="student",fetch=FetchType.EAGER)
@@ -81,11 +82,12 @@ public class Student {
 		this.role = role;
 	}
 
-	public String getCreateDt() {
+
+	public Date getCreateDt() {
 		return createDt;
 	}
 
-	public void setCreateDt(String createDt) {
+	public void setCreateDt(Date createDt) {
 		this.createDt = createDt;
 	}
 
